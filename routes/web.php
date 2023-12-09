@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::prefix('admin')
     ->namespace('Admin')
+    ->middleware(['auth', 'admin'])
     ->group(function(){
         Route::get('/', [DashboardController::class, 'index'])
            ->name('dashboard');
