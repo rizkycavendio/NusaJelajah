@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('tour_packages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('regions_id');
-            $table->foreignId('categories_id');
+            $table->foreignId('region_id');
+            $table->foreignId('category_id');
             $table->string('title');
             $table->string('slug');
             $table->longText('description');
             $table->string('num_people');
-            $table->string('tour_guide');
+            $table->boolean('tour_guide')->default(false);
             $table->string('duration');
             $table->date('departure_date');
             $table->integer('price');

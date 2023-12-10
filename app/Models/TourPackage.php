@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Region;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TourPackage extends Model
 {
@@ -13,4 +15,12 @@ class TourPackage extends Model
     protected $guarded = ['id'];
 
     protected $hidden = [];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function region(){
+        return $this->belongsTo(Region::class);
+    }
 }
