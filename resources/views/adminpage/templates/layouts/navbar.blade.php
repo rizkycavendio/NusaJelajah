@@ -45,6 +45,7 @@
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="userDropdown">
                 <form action="{{ url('logout') }}" method="POST">
+                    @csrf
                     <button class="dropdown-item" data-toggle="modal" data-target="#logoutModal" type="submit">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout

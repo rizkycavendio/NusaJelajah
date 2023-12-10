@@ -7,6 +7,10 @@
     <title>Home</title>
 </head>
 <body>
-    Home
+    @include('frontend.templates.navbar')
+      <div class="">Ini Homepage</div>
+       <div class="container">
+          @yield('content')
+       </div>
 </body>
 </html>
