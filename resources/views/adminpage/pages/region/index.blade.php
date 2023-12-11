@@ -6,9 +6,9 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Paket Tour Wisata Budaya</h1>
-            <a href="{{ route('tour-package.create') }}" class="btn btn-sm btn-primary shadow-sm">
-               <i class="fas fa-plus fa-sm text-white-50">Tambah Tour Wisata</i>
+            <h1 class="h3 mb-0 text-gray-800">Lokasi Paket Tour</h1>
+            <a href="{{ route('region.create') }}" class="btn btn-sm btn-primary shadow-sm">
+               <i class="fas fa-plus fa-sm text-white-50">Tambah Lokasi</i>
             </a>
         </div>
 
@@ -19,35 +19,20 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Title</th>
-                                <th>Lokasi</th>
-                                <th>Deskripsi</th>
-                                <th>Jumlah Orang</th>
-                                <th>Kategori</th>
-                                <th>Tour Guide</th>
-                                <th>Durasi</th>
-                                <th>Waktu Keberangkatan Tour</th>
-                                <th>Harga</th>
+                                <th>Lokasi/Wilayah</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($items as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->title }}</td>
-                                <td>{{ $item->region->location }}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->num_people }}</td>
-                                <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->tour_guide}}</td>
-                                <td>{{ $item->duration }}</td>
-                                <td>{{ $item->departure_date }}</td>
-                                <td>{{ $item->price }}</td>
+                                <td>{{ $item->location }}</td>
                                 <td>
-                                    <a href="{{ route('tour-package.edit', $item->id) }}" class="btn btn-info">
+                                    <a href="{{ route('region.edit', $item->id) }}" class="btn btn-info">
                                        edit data
                                     </a>
-                                    <form action="{{ route('tour-package.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('region.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">

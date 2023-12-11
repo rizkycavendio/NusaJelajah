@@ -42,7 +42,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('region.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Lokasi</span></a>
     </li>

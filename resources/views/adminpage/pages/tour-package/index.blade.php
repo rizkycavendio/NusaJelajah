@@ -36,10 +36,18 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->title }}</td>
-                                <td>{{ $item->region->location }}</td>
+                                @if ($item->region && $item->region->location !== null)
+                                 <td>{{ $item->region->location }}</td>
+                                @else
+                                 <td>Lokasi belum diset</td>
+                                @endif
                                 <td>{{ $item->description }}</td>
                                 <td>{{ $item->num_people }}</td>
-                                <td>{{ $item->category->name }}</td>
+                                @if ($item->category && $item->category->name !== null)
+                                 <td>{{ $item->category->name }}</td>
+                                @else
+                                 <td>Kategori belum diset</td>
+                                @endif
                                 <td>{{ $item->tour_guide}}</td>
                                 <td>{{ $item->duration }}</td>
                                 <td>{{ $item->departure_date }}</td>

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Region;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\RegionRequest;
 
 class RegionController extends Controller
 {
@@ -12,7 +15,11 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        $items = Region::all();
+
+        return view('adminpage.pages.region.index',[
+            'items' => $items
+        ]);
     }
 
     /**
@@ -20,15 +27,22 @@ class RegionController extends Controller
      */
     public function create()
     {
-        //
+        $items = Region::all();
+        return view('adminpage.pages.region.create', [
+            'items' => $items
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RegionRequest $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->location);
+
+        Region::create($data);
+        return redirect()->route('region.index');
     }
 
     /**
@@ -44,7 +58,11 @@ class RegionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $items = Region::findOrFail($id);
+
+        return view('adminpage.pages.region.edit',[
+            'items' => $items
+        ]);
     }
 
     /**
@@ -52,7 +70,13 @@ class RegionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+
+        $item = Region::findOrFail($id);
+
+        $item->update($data);
+        return redirect()->route('region.index');
     }
 
     /**
@@ -60,6 +84,10 @@ class RegionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Region::findOrFail($id);
+
+        $item->delete();
+
+        return redirect()->route('region.index');
     }
 }
