@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,10 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $items = Category::all();
+        return view('adminpage.pages.category.create', [
+            'items' => $items
+        ]);
     }
 
     /**
@@ -33,7 +37,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+
+        Category::create($data);
+        return redirect()->route('category.index');
     }
 
     /**
@@ -49,7 +57,11 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $items = Category::findOrFail($id);
+
+        return view('adminpage.pages.category.edit',[
+            'items' => $items
+        ]);
     }
 
     /**
@@ -57,7 +69,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+
+        $item = Category::findOrFail($id);
+
+        $item->update($data);
+        return redirect()->route('category.index');
     }
 
     /**
@@ -65,6 +83,10 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $item = Category::findOrFail($id);
+
+        $item->delete();
+
+        return redirect()->route('category.index');
     }
 }

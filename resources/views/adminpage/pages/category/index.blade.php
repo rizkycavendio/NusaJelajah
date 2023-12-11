@@ -19,23 +19,20 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Category</th>
+                                <th>Kategori</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @forelse ($items as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->category }}</td>
+                                <td>{{ $item->name }}</td>
                                 <td>
-                                    <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
-                                </td>
-                                <td>
-                                    <a href="{{ route('Category.edit', $item->id) }}" class="btn btn-info">
+                                    <a href="{{ route('category.edit', $item->id) }}" class="btn btn-info">
                                        edit data
                                     </a>
-                                    <form action="{{ route('Category.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('category.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">
@@ -51,7 +48,7 @@
                                 </td>
                             </tr>
                             @endforelse
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
