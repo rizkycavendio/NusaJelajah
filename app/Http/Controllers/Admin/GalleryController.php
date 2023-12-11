@@ -64,10 +64,10 @@ class GalleryController extends Controller
     public function edit(string $id)
     {
         $item = Gallery::findOrFail($id);
+        $tour_packages = TourPackage::all();
         return view('adminpage.pages.gallery.edit', [
             'item' => $item,
-            'categories' => Category::all(),
-            'regions' => Region::all(),
+            'tour_packages' => $tour_packages
         ]);
     }
 
@@ -77,7 +77,9 @@ class GalleryController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->title);
+        $data['image'] = $request->file('image')->store(
+            'assets/gallery', 'public'
+        );
 
         $item = Gallery::findOrFail($id);
 

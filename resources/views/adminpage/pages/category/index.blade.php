@@ -6,9 +6,9 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category Paket Tour</h1>
+            <h1 class="h3 mb-0 text-gray-800">Kategori Paket Tour</h1>
             <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary shadow-sm">
-               <i class="fas fa-plus fa-sm text-white-50">Tambah Gambar</i>
+               <i class="fas fa-plus fa-sm text-white-50">Tambah Kategori</i>
             </a>
         </div>
 
