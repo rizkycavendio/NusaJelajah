@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $items = Category::all();
+
+        return view('adminpage.pages.category.index',[
+            'items' => $items
+        ]);
     }
 
     /**

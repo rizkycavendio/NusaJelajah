@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tour_packages_id');
+            $table->foreignId('tour_package_id');
             $table->text('image');
             $table->timestamps();
             $table->softDeletes();

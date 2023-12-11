@@ -11,7 +11,7 @@ class Region extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function tourPackage(){
+    public function tour_package(){
         return $this->hasMany(TourPackage::class);
     }
 }

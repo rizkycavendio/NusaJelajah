@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Region;
+use App\Models\Gallery;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,5 +23,9 @@ class TourPackage extends Model
 
     public function region(){
         return $this->belongsTo(Region::class);
+    }
+
+    public function gallery(){
+        return $this->hasMany(Gallery::class);
     }
 }

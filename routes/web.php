@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RegionController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\TourPackageController;
 
 /*
@@ -27,6 +28,7 @@ Route::prefix('admin')
         Route::get('/', [DashboardController::class, 'index'])
            ->name('dashboard');
         Route::resource('tour-package', TourPackageController::class);
+        Route::resource('gallery', GalleryController::class);
         Route::resource('category', CategoryController::class);
         Route::resource('region', RegionController::class);
     });

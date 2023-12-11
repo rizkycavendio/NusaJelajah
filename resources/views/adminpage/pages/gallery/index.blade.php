@@ -6,8 +6,8 @@
 
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category Paket Tour</h1>
-            <a href="{{ route('category.create') }}" class="btn btn-sm btn-primary shadow-sm">
+            <h1 class="h3 mb-0 text-gray-800">Gallery Paket Tour</h1>
+            <a href="{{ route('gallery.create') }}" class="btn btn-sm btn-primary shadow-sm">
                <i class="fas fa-plus fa-sm text-white-50">Tambah Gambar</i>
             </a>
         </div>
@@ -19,23 +19,24 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Category</th>
+                                <th>Tour</th>
+                                <th>Image</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
+                        <tbody>
                             @forelse ($items as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->category }}</td>
+                                <td>{{ $item->tour_package->title }}</td>
                                 <td>
                                     <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
                                 </td>
                                 <td>
-                                    <a href="{{ route('Category.edit', $item->id) }}" class="btn btn-info">
+                                    <a href="{{ route('gallery.edit', $item->id) }}" class="btn btn-info">
                                        edit data
                                     </a>
-                                    <form action="{{ route('Category.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('gallery.destroy', $item->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-danger">
@@ -51,7 +52,7 @@
                                 </td>
                             </tr>
                             @endforelse
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
