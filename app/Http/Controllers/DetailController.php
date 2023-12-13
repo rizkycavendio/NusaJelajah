@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\TourPackage;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class DetailController extends Controller
 {
 
     /**
@@ -13,10 +13,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index($slug)
     {
-        $items = TourPackage::with(['gallery', 'category', 'region'])->get();
-        return view('frontend.pages.home', [
+        $items = TourPackage::with(['gallery', 'category', 'region'])->where('slug', $slug)->firstOrFail();
+        return view('frontend.pages.detail', [
             'items' => $items
         ]);
     }

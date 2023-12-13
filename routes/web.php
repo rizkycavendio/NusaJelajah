@@ -8,20 +8,14 @@ use App\Http\Controllers\Admin\RegionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\TourPackageController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\AllTourController;
+use App\Http\Controllers\DetailController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
+Route::get('/all-tour', [AllTourController::class, 'index'])->name('all-tour');
+Route::get('/detail/{slug}', [DetailController::class, 'index'])->name('detail');
+Route::get('/all-tour/category/{slug}', [CategoryController::class, 'index'])->name('category-filter');
+Route::get('/all-tour/region/{slug}', [RegionController::class, 'index'])->name('region-filter');
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function(){

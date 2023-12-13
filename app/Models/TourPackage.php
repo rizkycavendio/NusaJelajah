@@ -17,6 +17,34 @@ class TourPackage extends Model
 
     protected $hidden = [];
 
+    public function scopeFilter($query, array $filters)
+{
+    $query->when($filters['search'] ?? false, function ($query, $search) {
+        return $query->where(function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%')
+                ->orWhere('num_people', 'like', '%' . $search . '%')
+                ->orWhere('tour_guide', 'like', '%' . $search . '%')
+                ->orWhere('duration', 'like', '%' . $search . '%')
+                ->orWhere('price', 'like', '%' . $search . '%');
+        });
+    });
+
+    $query->when($filters['category'] ?? false, function ($query, $category) {
+        return $query->whereHas('category', function ($query) use ($category) {
+            $query->where('slug', $category)
+                ->orWhere('name', 'like', '%' . $category . '%');
+        });
+    });
+
+    $query->when($filters['region'] ?? false, function ($query, $region) {
+        return $query->whereHas('region', function ($query) use ($region) {
+            $query->where('slug', $region)
+                ->orWhere('location', 'like', '%' . $region . '%');
+        });
+    });
+}
+
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
