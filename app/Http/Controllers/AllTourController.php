@@ -28,7 +28,7 @@ class AllTourController extends Controller
         }
 
         return view('frontend.pages.all-tour', [
-            "title" => "All Homestay" . $title,
+            "title" => "All Tour Package" . $title,
             "items" => TourPackage::latest()->filter(request(['search', 'category', 'region']))->paginate(8),
             "regions" => Region::all(),
             "categories" => Category::all()
