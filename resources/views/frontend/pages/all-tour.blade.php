@@ -7,17 +7,21 @@
    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
  </div>
  <div class="carousel-inner">
    <div class="carousel-item active">
-     <img src="{{ asset('img/candi-view.jpg') }}" class="d-block w-100" alt="..." style="max-height: 600px; object-fit: cover;">
+     <img src="{{ asset('img/borobudur2.jpg') }}" class="d-block w-100" alt="..." style="max-height: 450px; object-fit: cover;">
    </div>
    <div class="carousel-item">
-     <img src="/img/slider3.jpg" class="d-block w-100" alt="..." style="max-height: 600px; object-fit: cover;">
+     <img src="{{ asset('img/reog-ponorogo.jpg') }}" class="d-block w-100" alt="..." style="max-height: 450px; object-fit: cover;">
    </div>
    <div class="carousel-item">
-     <img src="/img/slider2.jpg" class="d-block w-100" alt="..." style="max-height: 600px; object-fit: cover;">
+     <img src="{{ asset('img/komodo1.jpg') }}" class="d-block w-100" alt="..." style="max-height: 450px; object-fit: cover;">
    </div>
+   <div class="carousel-item">
+    <img src="{{ asset('img/bali1.jpg') }}" class="d-block w-100" alt="..." style="max-height: 450px; object-fit: cover;">
+  </div>
  </div>
  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
    <span class="carousel-control-prev-icon" aria-hidden="true"></span>

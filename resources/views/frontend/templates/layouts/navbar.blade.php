@@ -13,7 +13,7 @@
             <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('all-tour') ? 'active' : '' }}" href="/all-tour">Cari Homestay!</a>
+            <a class="nav-link {{ Request::is('all-tour') ? 'active' : '' }}" href="/all-tour">Cari Tour Wisata!</a>
           </li>
         </ul>
   
@@ -36,7 +36,7 @@
           </li>
           @else 
           <li class="nav-item">
-            <a href="/login" class="nav-link btn btn-warning"><i class="bi bi-person-fill"></i> Login</a>
+            <a href="/login" class="nav-link btn btn-primary"><i class="bi bi-person-fill"></i> Login</a>
           </li>
         </ul>
         @endauth
