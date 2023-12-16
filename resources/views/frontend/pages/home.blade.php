@@ -10,6 +10,7 @@
     {{-- bootstrap icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-navbar.css') }}">
     <title>NusaJelajah | Home</title>
     <style>
         section {
@@ -30,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#tour">Tour</a>
@@ -140,7 +141,7 @@
                           </a>
                       </p>
                   </span> 
-                  <h6 class="card-title py-2">Rp{{ $post->price }}/Orang</h6>
+                  <h6 class="card-title py-2">Rp. {{ number_format($post->price, 0, ',', '.') }} / Orang</h6>
                   <!-- Tombol Detail -->
                   <div class="d-flex justify-content-end">
                       <a href="/all-tour/detail/{{ $post->slug }}">
@@ -179,7 +180,11 @@
           <div class="card border-0 shadow flip-card" style="width: 18rem; position: relative; margin-bottom: 20px;">
               <div class="flip-card-inner">
                   <div class="flip-card-front">
-                      <img src="img/fitur1.jpg" class="card-img-top" alt="...">
+                      @if ($item->gallery->isNotEmpty())
+                         <img src="{{ Storage::url($post->gallery->first()->image) }}" class="card-img-top" alt="...">
+                      @else
+                         <img src="img/homestay.jpg" class="card-img-top" alt="">
+                      @endif
                       <div class="corner-text" style="position: absolute; bottom: 0; left: 0; z-index: 1; background-color: rgba(0, 145, 255, 0.5);">
                         <p class="text-white m-2">{{ $item->title }}</p>
                       </div>

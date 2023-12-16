@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Region;
 use App\Models\TourPackage;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,8 @@ class DetailController extends Controller
     {
         $items = TourPackage::with(['gallery', 'category', 'region'])->where('slug', $slug)->firstOrFail();
         return view('frontend.pages.detail', [
-            'items' => $items
+            'title' => 'Detail',
+            'items' => $items,
         ]);
     }
 }

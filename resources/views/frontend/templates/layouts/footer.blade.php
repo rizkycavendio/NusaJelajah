@@ -26,10 +26,10 @@
                 </h6>
             </div>
             <div class="col-md-6">
-                    <a class="text-white" href=""><span class="bi bi-facebook"></span></a>
-                    <a class="text-white" href=""><span class="bi bi-instagram"></span></a>
-                    <a class="text-white" href=""><span class="bi bi-twitter"></span></a>
-                    <a class="text-white" href=""><span class="bi bi-whatsapp"></span></a>
+                    <a class="text-white" href=""><span class="bi bi-facebook" style="font-size: 25px"></span></a>
+                    <a class="text-white" href=""><span class="bi bi-instagram" style="font-size: 25px"></span></a>
+                    <a class="text-white" href=""><span class="bi bi-twitter" style="font-size: 25px"></span></a>
+                    <a class="text-white" href=""><span class="bi bi-whatsapp" style="font-size: 25px"></span></a>
              </div>
         </div>
     </div>

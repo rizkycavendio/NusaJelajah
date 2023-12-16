@@ -10,8 +10,8 @@
     {{-- bootstrap icons --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     
-    {{-- form login --}}
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ asset('css/style-detail-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-navbar.css') }}">
     {{-- <link rel="stylesheet" href="css/all.css">
     <link rel="stylesheet" href="css/bootstrap.min.css"> --}}
 

@@ -146,10 +146,10 @@
                                         </a>
                                     </p>
                                 </span> 
-                                <h6 class="card-title py-2">Rp{{ $post->price }}/Orang</h6>
+                                <h6 class="card-title py-2">Rp. {{ number_format($post->price, 0, ',', '.') }} / Orang</h6>
                                 <!-- Tombol Detail -->
                                 <div class="d-flex justify-content-end">
-                                    <a href="/all-tour/detail/{{ $post->slug }}">
+                                    <a href="detail/{{ $post->slug }}">
                                         <button class="btn btn-primary">Detail</button>
                                     </a>
                                 </div>
