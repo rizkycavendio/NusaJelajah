@@ -61,7 +61,10 @@
                 <label for="password-confirm">Confirm Password</label>
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
               </div>
-
+              <span class="text-center mb-2">
+                Sudah punya akun?
+                <a href="{{ route('login') }}">login</a>
+              </span>
               <input type="submit" value="Register" class="btn btn-block btn-primary">
             </form>
             </div>

@@ -50,7 +50,7 @@
    </div>
  </div>
 
- {{-- card produk homestay --}}
+ {{-- card tour --}}
    <section>
        <div class="container-lg">
            <div class="mb-5">
@@ -110,10 +110,10 @@
                    </div>
                  </div>
                </div>
-               <h4 class="mt-5">Promo:</h4>
+               {{-- <h4 class="mt-5">Promo:</h4>
                <div class="card border-0">
                 <img src="/img/banner_promo.jpg" alt="">
-               </div>
+               </div> --}}
              </div>
 
              {{-- kolom kanan card --}}
@@ -157,14 +157,14 @@
                         </div>
                     </div> 
                 @endforeach
+                <div class="d-flex justify-content-end">
+                  {{ $items->links() }}
+                </div>
                </div>
              </div>
             @else
               <h5 class="text-center">Tour Package Not Found</h5>
             @endif
-            <div class="d-flex justify-content-end mt-3">
-             {{ $items->links() }}
-            </div>
            </div>
        </div>
    </section>

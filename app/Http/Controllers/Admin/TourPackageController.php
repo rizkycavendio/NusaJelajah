@@ -41,8 +41,10 @@ class TourPackageController extends Controller
     public function store(TourPackageRequest $request)
     {
         $data = $request->all();
-        $data = $this->cleanMapUrl($data);
         $data['slug'] = Str::slug($request->title);
+    
+        $cleanedMapUrl = $this->cleanMapUrl($data);
+        $data['map_url'] = $cleanedMapUrl['map_url'];
 
         TourPackage::create($data);
         return redirect()->route('tour-package.index');
@@ -72,14 +74,15 @@ class TourPackageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TourPackageRequest $request, string $id)
     {
-        $data = $request->all();
-        $data = $this->cleanMapUrl($data);
-        $data['slug'] = Str::slug($request->title);
-
         $item = TourPackage::findOrFail($id);
-
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->title);
+    
+        $cleanedMapUrl = $this->cleanMapUrl($data);
+        $data['map_url'] = $cleanedMapUrl['map_url'];
+    
         $item->update($data);
         return redirect()->route('tour-package.index');
     }
@@ -96,23 +99,22 @@ class TourPackageController extends Controller
     }
 
     private function cleanMapUrl($data)
-{
-    if (isset($data['map_url'])) {
-        $dom = new \DOMDocument();
-        $dom->loadHTML($data['map_url']);
-        
-        $iframes = $dom->getElementsByTagName('iframe');
-        foreach ($iframes as $iframe) {
-            $src = $iframe->getAttribute('src');
+    {
+        if (isset($data['map_url'])) {
+            $dom = new \DOMDocument();
+            $dom->loadHTML($data['map_url']);
             
-            // Store the src value if it contains 'google.com/maps/embed'
-            if (strpos($src, 'google.com/maps/embed') !== false) {
-                return ['map_url' => $src];
+            $iframes = $dom->getElementsByTagName('iframe');
+            foreach ($iframes as $iframe) {
+                $src = $iframe->getAttribute('src');
+                
+                // Store the src value if it contains 'google.com/maps/embed'
+                if (strpos($src, 'google.com/maps/embed') !== false) {
+                    return ['map_url' => $src];
+                }
             }
         }
-    }
     
-    return ['map_url' => 'https://example.com'];
-}
-
+        return ['map_url' => 'https://example.com'];
+    }      
 }

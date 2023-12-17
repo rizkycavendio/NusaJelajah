@@ -13,7 +13,7 @@ use App\Http\Controllers\DetailController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/all-tour', [AllTourController::class, 'index'])->name('all-tour');
-Route::get('/all-tour/detail/{slug}', [DetailController::class, 'index'])->name('detail');
+Route::get('/all-tour/detail/{slug}', [DetailController::class, 'index'])->middleware(['auth', 'user'])->name('detail');
 Route::get('/all-tour/category/{slug}', [CategoryController::class, 'index'])->name('category-filter');
 Route::get('/all-tour/region/{slug}', [RegionController::class, 'index'])->name('region-filter');
 Route::prefix('admin')

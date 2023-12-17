@@ -85,6 +85,9 @@
                 <div class="form-group">
                     <label for="map_url">Masukkan Kode Embed Map dari Google Maps</label>
                     <input type="text" class="form-control" name="map_url" placeholder="Masukkan Kode Embed contoh: <iframe></iframe>" value="{{ old('map_url') }}">
+                    @error('map_url')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Simpan</button>                                                
                 </form>

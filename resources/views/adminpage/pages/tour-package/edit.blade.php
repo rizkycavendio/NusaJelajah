@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group">
                     <label for="map_url">Masukkan Kode Embed Map Google Maps</label>
-                    <input type="text" class="form-control" name="map_url" placeholder="Masukkan Kode Embed <iframe></iframe>" value="{{ $item->map_url }}">
+                    <input type="text" class="form-control" name="map_url" placeholder="Masukkan Kode Embed <iframe></iframe>" value='<iframe src="{{ $item->map_url }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>'>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Ubah</button>                                                
                 </form>

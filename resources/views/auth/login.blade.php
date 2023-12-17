@@ -12,7 +12,7 @@
             <div class="col-md-8">
               <div class="mb-4">
               <h3>Log In</h3>
-              <p class="mb-4">Login dengan akun yang sudah didaftarkan.</p>
+              <p class="mb-4">Silahkan Login dengan akun yang sudah didaftarkan.</p>
             </div>
             <form action="{{ route('login') }}" method="post" id="loginForm">
               @csrf
@@ -47,6 +47,10 @@
                     </span> 
                 @endif
               </div>
+              <span class="text-center mb-2">
+                Belum punya akun?
+                <a href="{{ route('register') }}">Register</a>
+              </span>
               <input type="submit" value="Log In" class="btn btn-block btn-primary">
             </form>
             </div>

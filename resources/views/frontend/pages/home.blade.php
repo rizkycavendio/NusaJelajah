@@ -177,11 +177,11 @@
     <div class="row  my-5 align-items-center justify-content-center">
         @foreach ($items->take(8) as $item)
         <div class="col-8 col-lg-4 col-xl-3">
-          <div class="card border-0 shadow flip-card" style="width: 18rem; position: relative; margin-bottom: 20px;">
+          <div class="card border-0 shadow flip-card" style="position: relative; margin-bottom: 20px;">
               <div class="flip-card-inner">
                   <div class="flip-card-front">
                       @if ($item->gallery->isNotEmpty())
-                         <img src="{{ Storage::url($post->gallery->first()->image) }}" class="card-img-top" alt="...">
+                        <img src="{{ Storage::url($item->gallery->first()->image) }}" class="card-img-top img-fluid" alt="..." style="object-fit: cover; height: 100%;">
                       @else
                          <img src="img/homestay.jpg" class="card-img-top" alt="">
                       @endif
@@ -189,7 +189,7 @@
                         <p class="text-white m-2">{{ $item->title }}</p>
                       </div>
                   </div>
-                  <div class="flip-card-back">
+                  <div class="flip-card-back" style="overflow: hidden;">
                       <p class="p-2">{{ $item->description }}</p>
                   </div>
               </div>
