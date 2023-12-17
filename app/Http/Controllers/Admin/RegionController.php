@@ -6,6 +6,7 @@ use App\Models\Region;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use App\Http\Requests\Admin\RegionRequest;
 
 class RegionController extends Controller
@@ -38,11 +39,20 @@ class RegionController extends Controller
      */
     public function store(RegionRequest $request)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->location);
+        try {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->location);
 
-        Region::create($data);
-        return redirect()->route('region.index');
+            Region::create($data);
+             return redirect()->route('region.index');
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] === 1062) {
+                return redirect()->back()->withInput()->withErrors(['location' => 'Lokasi/Wilayah sudah ada di database.']);
+            }
+    
+            // Handle other query exceptions as needed
+            return redirect()->back()->withInput()->withErrors(['location' => 'Terjadi kesalahan saat menyimpan data.']);
+        }
     }
 
     /**
@@ -70,13 +80,22 @@ class RegionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->location);
+        try {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->location);
 
-        $item = Region::findOrFail($id);
+             $item = Region::findOrFail($id);
 
-        $item->update($data);
-        return redirect()->route('region.index');
+             $item->update($data);
+             return redirect()->route('region.index');
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] === 1062) {
+                return redirect()->back()->withInput()->withErrors(['location' => 'Lokasi/Wilayah sudah ada di database.']);
+            }
+    
+            // Handle other query exceptions as needed
+            return redirect()->back()->withInput()->withErrors(['location' => 'Terjadi kesalahan saat menyimpan data.']);
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\QueryException;
 use App\Http\Requests\Admin\CategoryRequest;
 
 class CategoryController extends Controller
@@ -38,11 +39,20 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
+        try {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->name);
 
-        Category::create($data);
-        return redirect()->route('category.index');
+            Category::create($data);
+            return redirect()->route('category.index');
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] === 1062) {
+                return redirect()->back()->withInput()->withErrors(['name' => 'Kategori tersebut sudah ada']);
+            }
+    
+            // Handle other query exceptions as needed
+            return redirect()->back()->withInput()->withErrors(['name' => 'TKategori tersebut sudah ada']);
+        }
     }
 
     /**
@@ -70,13 +80,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
+        try {
+            $data = $request->all();
+            $data['slug'] = Str::slug($request->name);
 
-        $item = Category::findOrFail($id);
+            $item = Category::findOrFail($id);
 
-        $item->update($data);
-        return redirect()->route('category.index');
+            $item->update($data);
+            return redirect()->route('category.index');
+        } catch (QueryException $e) {
+            if ($e->errorInfo[1] === 1062) {
+                return redirect()->back()->withInput()->withErrors(['name' => 'Kategori tersebut sudah ada']);
+            }
+    
+            // Handle other query exceptions as needed
+            return redirect()->back()->withInput()->withErrors(['name' => 'TKategori tersebut sudah ada']);
+        }
     }
 
     /**

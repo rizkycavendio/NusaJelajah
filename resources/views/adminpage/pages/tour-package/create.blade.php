@@ -83,8 +83,8 @@
                     <input type="number" class="form-control" id="price" name="price" placeholder="Masukkan harga" value="{{ old('price') }}">
                 </div>
                 <div class="form-group">
-                    <label for="map_url">Masukkan Kode Embed Map Google Maps</label>
-                    <input type="text" class="form-control" name="map_url" placeholder="URL/Link Map" value="{{ old('map_url') }}">
+                    <label for="map_url">Masukkan Kode Embed Map dari Google Maps</label>
+                    <input type="text" class="form-control" name="map_url" placeholder="Masukkan Kode Embed contoh: <iframe></iframe>" value="{{ old('map_url') }}">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Simpan</button>                                                
                 </form>

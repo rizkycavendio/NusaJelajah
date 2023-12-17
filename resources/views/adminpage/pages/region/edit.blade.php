@@ -28,7 +28,7 @@
                     <label for="location">Masukkan Lokasi:</label>
                     <input type="text" class="form-control" id="location" name="location" placeholder="Masukkan Lokasi" value="{{ $items->location }}">
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Simpan</button>                                                
+                <button type="submit" class="btn btn-primary btn-block">Update</button>                                                
                 </form>
             </div>
         </div>
