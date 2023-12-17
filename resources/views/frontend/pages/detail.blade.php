@@ -7,10 +7,22 @@
         <div class="col-lg-8">
             <div class="card card-details">
                 <h1>{{ $items->title }}</h1>
-                @if($items->region)
-                    <p class="details-p">{{ $items->region->location }}</p>
-                @else
+                @if(empty($items->city) && empty($items->region))
                     <p class="details-p">No Data</p>
+                @else
+                <p class="details-p">
+                    @if(empty($items->city))
+                        No Data, 
+                    @else
+                        {{ $items->city }},
+                    @endif
+
+                    @if(empty($items->region))
+                        No Data
+                    @else
+                        {{ $items->region->location }}
+                    @endif
+                </p>
                 @endif
                 @if($items->gallery && count($items->gallery) > 0)
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -83,7 +95,7 @@
                     </div>
                 </div>
                 <h2 class="mt-3">Peta Lokasi</h2>
-                <iframe  class="location-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126646.20960979542!2d112.63028191963222!3d-7.275612006286057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbf8381ac47f%3A0x3027a76e352be40!2sSurabaya%2C%20East%20Java!5e0!3m2!1sen!2sid!4v1696634292920!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi"></iframe>
+                <iframe  class="location-map" src="{{ $items->map_url }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi"></iframe>
             </div>
         </div>
 

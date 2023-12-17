@@ -41,6 +41,7 @@ class TourPackageController extends Controller
     public function store(TourPackageRequest $request)
     {
         $data = $request->all();
+        $data = $this->cleanMapUrl($data);
         $data['slug'] = Str::slug($request->title);
 
         TourPackage::create($data);
@@ -74,6 +75,7 @@ class TourPackageController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->all();
+        $data = $this->cleanMapUrl($data);
         $data['slug'] = Str::slug($request->title);
 
         $item = TourPackage::findOrFail($id);
@@ -92,4 +94,25 @@ class TourPackageController extends Controller
 
         return redirect()->route('tour-package.index');
     }
+
+    private function cleanMapUrl($data)
+{
+    if (isset($data['map_url'])) {
+        $dom = new \DOMDocument();
+        $dom->loadHTML($data['map_url']);
+        
+        $iframes = $dom->getElementsByTagName('iframe');
+        foreach ($iframes as $iframe) {
+            $src = $iframe->getAttribute('src');
+            
+            // Store the src value if it contains 'google.com/maps/embed'
+            if (strpos($src, 'google.com/maps/embed') !== false) {
+                return ['map_url' => $src];
+            }
+        }
+    }
+    
+    return ['map_url' => 'https://example.com'];
+}
+
 }

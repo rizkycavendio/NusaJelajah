@@ -71,7 +71,7 @@ class RegionController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->all();
-        $data['slug'] = Str::slug($request->name);
+        $data['slug'] = Str::slug($request->location);
 
         $item = Region::findOrFail($id);
 

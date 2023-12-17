@@ -31,6 +31,8 @@ class TourPackageRequest extends FormRequest
             'duration' => 'required|max:255',
             'departure_date' => 'required|date',
             'price' => 'required|integer',
+            'map_url' => 'required|url',
+            'city' => 'required|max:255',
         ];
     }
 }

@@ -14,20 +14,22 @@
 
         <div class="row">
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive table-sm">
                     <table class="table table-bordered" width="100%" callspacing="0">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>Lokasi</th>
+                                <th>Kota/Kabupaten</th>
+                                <th>Provinsi</th>
                                 <th>Deskripsi</th>
                                 <th>Jumlah Orang</th>
                                 <th>Kategori</th>
                                 <th>Tour Guide</th>
                                 <th>Durasi</th>
-                                <th>Waktu Keberangkatan Tour</th>
+                                <th>Kebernagkatan Tour</th>
                                 <th>Harga</th>
+                                <th>Map URL</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -36,10 +38,11 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->title }}</td>
+                                <td>{{ $item->city }}</td>
                                 @if ($item->region && $item->region->location !== null)
                                  <td>{{ $item->region->location }}</td>
                                 @else
-                                 <td>Lokasi belum diset</td>
+                                 <td>Provinsi belum diset</td>
                                 @endif
                                 <td>{{ $item->description }}</td>
                                 <td>{{ $item->num_people }}</td>
@@ -52,6 +55,11 @@
                                 <td>{{ $item->duration }}</td>
                                 <td>{{ $item->departure_date }}</td>
                                 <td>{{ $item->price }}</td>
+                                @if ($item->map_url)
+                                <td>URL Sudah diset</td>
+                                @else
+                                <td>URL Kosong</td>
+                                @endif
                                 <td>
                                     <a href="{{ route('tour-package.edit', $item->id) }}" class="btn btn-info">
                                        edit data

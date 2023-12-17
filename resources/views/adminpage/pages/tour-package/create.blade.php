@@ -28,7 +28,11 @@
                     <input type="text" class="form-control" name="title" placeholder="Title" value="{{ old('title') }}">
                 </div>
                 <div class="form-group">
-                    <label for="region" class="form-label">Pilih Lokasi: </label>
+                    <label for="city">Kota/Kabupaten</label>
+                    <input type="text" class="form-control" name="city" placeholder="Kota/Kabupaten" value="{{ old('city') }}">
+                </div>
+                <div class="form-group">
+                    <label for="region" class="form-label">Pilih Provinsi: </label>
                     <select class="form-select" name="region_id">
                       @foreach ($regions as $region)
                          @if (old('region_id')==$region->id)
@@ -77,6 +81,10 @@
                 <div class="form-group">
                     <label for="price">Harga</label>
                     <input type="number" class="form-control" id="price" name="price" placeholder="Masukkan harga" value="{{ old('price') }}">
+                </div>
+                <div class="form-group">
+                    <label for="map_url">Masukkan Kode Embed Map Google Maps</label>
+                    <input type="text" class="form-control" name="map_url" placeholder="URL/Link Map" value="{{ old('map_url') }}">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Simpan</button>                                                
                 </form>
