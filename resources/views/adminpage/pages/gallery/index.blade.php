@@ -28,7 +28,14 @@
                             @forelse ($items as $item)
                             <tr>
                                 <td>{{ $item->id }}</td>
-                                <td>{{ $item->tour_package->title }}</td>
+                                @if ($item->tour_package && $item->tour_package->title)
+                                     <!-- Jika $item->tour_package tidak null dan memiliki properti 'title' -->
+                                    <td>{{ $item->tour_package->title }}</td>
+                                @else
+                                        <!-- Jika $item->tour_package null atau tidak memiliki properti 'title' -->
+                                    <td>Tour Package Title Not Available</td>
+                                @endif
+
                                 <td>
                                     <img src="{{ Storage::url($item->image) }}" alt="" style="width: 150px" class="img-thumbnail">
                                 </td>
